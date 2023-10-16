@@ -200,6 +200,19 @@ export declare type ThreeDSInfo = {
   creq?: string;
 };
 
+export declare interface PaymentErrorCause {
+  code?: number;
+  description?: string;
+  data?: string;
+}
+
+export declare interface PaymentErrorResponse {
+  message?: string;
+  error?: string;
+  status?: number;
+  cause?: PaymentErrorCause;
+}
+
 export declare interface PaymentResponse extends ApiResponse {
   id?: number;
   date_created?: string;
@@ -265,3 +278,4 @@ export declare interface PaymentResponse extends ApiResponse {
   internal_metadata?: any;
 }
 
+export declare type PaymentResponseType = PaymentResponse | PaymentErrorResponse;

@@ -1,13 +1,13 @@
 import { RestClient } from '@utils/restClient';
 
-import type { PaymentResponse } from '../commonTypes';
+import type { PaymentResponseType } from '../commonTypes';
 import type { PaymentCancelClient } from './types';
 
-export default function cancel({ id, config }: PaymentCancelClient): Promise<PaymentResponse>  {
+export default function cancel<R extends PaymentResponseType>({ id, config }: PaymentCancelClient): Promise<R> {
 	const cancelBody = {
 		status: 'cancelled'
 	};
-	return RestClient.fetch<PaymentResponse>(
+	return RestClient.fetch<R>(
 		`/v1/payments/${id}`,
 		{
 			method: 'PUT',

@@ -1,8 +1,9 @@
 import { RestClient } from '@src/utils/restClient';
-import type { PaymentSearch, PaymentSearchClient } from './types';
+import type { PaymentSearchClient } from './types';
+import { PaymentResponseType } from '../commonTypes';
 
-export default function search({ options, config }: PaymentSearchClient): Promise<PaymentSearch> {
-	return RestClient.fetch<PaymentSearch>(
+export default function search<T extends PaymentResponseType>({ options, config }: PaymentSearchClient): Promise<T> {
+	return RestClient.fetch<T>(
 		'/v1/payments/search',
 		{
 			headers: {
