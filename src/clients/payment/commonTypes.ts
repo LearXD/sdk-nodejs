@@ -210,7 +210,7 @@ export declare interface PaymentErrorResponse {
   message?: string;
   error?: string;
   status?: number;
-  cause?: PaymentErrorCause;
+  cause?: PaymentErrorCause[];
 }
 
 export declare interface PaymentResponse extends ApiResponse {
@@ -278,4 +278,4 @@ export declare interface PaymentResponse extends ApiResponse {
   internal_metadata?: any;
 }
 
-export declare type PaymentResponseType = PaymentResponse | PaymentErrorResponse;
+export declare type PaymentResponseType = PaymentResponse & PaymentErrorResponse;
